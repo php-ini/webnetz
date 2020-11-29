@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Domains\Webnetz\User\Repositories;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,11 +10,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-/**
- * Class User
- * @package App\Models
- * @deprecated
- */
 class User extends Authenticatable
 {
     use HasApiTokens;
