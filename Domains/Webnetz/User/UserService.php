@@ -2,13 +2,15 @@
 
 namespace Domains\Webnetz\User;
 
-use Domains\Webnetz\User\Repositories\User;
+use Auth;
 use Illuminate\Support\Facades\Hash;
+use Domains\Webnetz\Core\AbstractService;
+use Domains\Webnetz\User\Repositories\User;
 use Domains\Webnetz\User\Validators\UserValidator;
 
-class UserService
+final class UserService extends AbstractService
 {
-    private $validator;
+    protected $validator;
 
     /**
      * UserService constructor.
@@ -27,13 +29,9 @@ class UserService
         ]);
     }
 
-    public function isValidUser(array $input): bool
+    public function getCurrentUser()
     {
-        return $this->validator->validate($input);
+        return Auth::user();
     }
 
-    public function getValidationErrors(): array
-    {
-        return $this->validator->getMessages();
-    }
 }

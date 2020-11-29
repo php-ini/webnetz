@@ -21,7 +21,7 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         $userService = new UserService();
-        if($userService->isValidUser($input)) {
+        if($userService->isValid($input)) {
             return $userService->createUser($input);
         }
 
