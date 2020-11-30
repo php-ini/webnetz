@@ -17,4 +17,14 @@ class Category extends Model
     protected $table = 'category';
 
     protected $fillable = ['name', 'description', 'user_id'];
+
+
+    public function user(){
+        return $this->belongsTo('Domains\Webnetz\User\Repositories\User', 'user_id');
+    }
+
+    public function images()
+    {
+        return $this->belongsToMany('Domains\Webnetz\Image\Repositories\Image', 'category_image', 'category_id');
+    }
 }

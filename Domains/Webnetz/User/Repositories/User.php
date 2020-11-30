@@ -58,4 +58,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function categories(){
+        return $this->hasMany('Domains\Webnetz\Category\Repositories\Category', 'user_id');
+    }
 }

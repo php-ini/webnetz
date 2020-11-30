@@ -15,4 +15,9 @@ abstract class AbstractService
     {
         return $this->validator->getMessages();
     }
+
+    public function formatInput(array $input): array
+    {
+        return $this->formatter->format($input);
+    }
 }

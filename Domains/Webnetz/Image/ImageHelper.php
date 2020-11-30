@@ -1,0 +1,14 @@
+<?php
+
+namespace Domains\Webnetz\Image;
+
+use Domains\Webnetz\Image\ImageService;
+
+class ImageHelper
+{
+    public static function getUserImages()
+    {
+        $service = new ImageService();
+        return $service->getUserImages();
+    }
+}

@@ -25,3 +25,5 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->name('dashboard');
 
 Route::resource('category', Category::class);
+
+Route::resource('image', Image::class);

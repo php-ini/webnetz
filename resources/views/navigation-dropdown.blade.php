@@ -17,8 +17,11 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('category.index') }}" :active="request()->routeIs('category.index') or request()->routeIs('category.create') or request()->routeIs('category.edit')">
+                    <x-jet-nav-link href="{{ route('category.index') }}" :active="request()->routeIs('category.index') or request()->routeIs('category.create') or request()->routeIs('category.edit') or request()->routeIs('category.show')">
                         {{ __('Categories') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('image.index') }}" :active="request()->routeIs('image.index') or request()->routeIs('image.create') or request()->routeIs('image.edit') or request()->routeIs('image.show')">
+                        {{ __('Images') }}
                     </x-jet-nav-link>
                 </div>
             </div>

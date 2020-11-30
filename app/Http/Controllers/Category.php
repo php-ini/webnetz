@@ -7,10 +7,13 @@ use Domains\Webnetz\Category\CategoryService;
 
 class Category extends Controller
 {
+    private CategoryService $service;
+
     public function __construct()
     {
         view()->share('header', 'Categories Listing');
         view()->share('slot', '');
+        $this->service = new CategoryService();
     }
 
     /**
@@ -20,9 +23,7 @@ class Category extends Controller
      */
     public function index()
     {
-        $categoryService = new CategoryService();
-
-        return view('category.index', ['categories' => $categoryService->getCategoriesWithPagination()]);
+        return view('category.index', ['categories' => $this->service->getCategoriesWithPagination()]);
     }
 
     /**
@@ -43,17 +44,16 @@ class Category extends Controller
      */
     public function store(Request $request)
     {
-        $service = new CategoryService();
         $input = $request->all();
 
-        if ($service->isValid($input)) {
-            $service->createCategory($input);
+        if ($this->service->isValid($input)) {
+            $this->service->createCategory($input);
             $request->session()->flash('message', 'Category created successfully !');
 
             return redirect('category');
         }
 
-        return $service->getValidationErrors();
+        return $this->service->getValidationErrors();
     }
 
     /**
@@ -75,8 +75,7 @@ class Category extends Controller
      */
     public function edit(Request $request, int $id)
     {
-        $service = new CategoryService();
-        $category = $service->getCategoryById($id);
+        $category = $this->service->getCategoryById($id);
 
         return view('category.edit', compact('category'));
     }
@@ -90,17 +89,16 @@ class Category extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service = new CategoryService();
         $input = $request->all();
 
-        if ($service->isValid($input)) {
-            $service->saveCategory($id, $input);
+        if ($this->service->isValid($input)) {
+            $this->service->saveCategory($id, $input);
             $request->session()->flash('message', 'Category updated successfully !');
 
             return redirect('category');
         }
 
-        return $service->getValidationErrors();
+        return $this->service->getValidationErrors();
     }
 
     /**
@@ -111,10 +109,8 @@ class Category extends Controller
      */
     public function destroy(Request $request, int $id)
     {
-        $service = new CategoryService();
-
         if ($id) {
-            $service->deleteCategory($id);
+            $this->service->deleteCategory($id);
 
             $request->session()->flash('message', 'Category deleted successfully !');
 
