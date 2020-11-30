@@ -8,7 +8,8 @@ namespace Domains\Webnetz\User\Formatters;
  * @package Domains\Webnetz\User\Formatters
  * @author Mahmoud Abdelsattar <jinkazama_m@yahoo.com>
  */
-interface FormatterInterface {
+interface FormatterInterface
+{
 
     /**
      * @param array $data

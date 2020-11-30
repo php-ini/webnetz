@@ -12,7 +12,7 @@
 
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                     <div class="mt-8 text-2xl">
-                        Welcome to your Webnetz Task application!
+                        Welcome to the Webnetz Task application!
                     </div>
 
                     <div class="mt-6 text-gray-500">
@@ -22,6 +22,9 @@
                         <br>
                         Have fun!
                         <hr>
+                        @if(count(\Domains\Webnetz\Image\ImageHelper::getUserImages()) == 0)
+                            <a href="{{ route('image.create') }}"><button class="btn btn-success">Start adding images</button></a>
+                        @endif
                         <div class="row">
                             @foreach(\Domains\Webnetz\Image\ImageHelper::getUserImages() as $img)
                                 <div class="col-md-4">

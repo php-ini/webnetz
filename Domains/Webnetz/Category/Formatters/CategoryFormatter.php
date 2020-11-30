@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace Domains\Webnetz\Category\Formatters;
 
@@ -8,7 +8,6 @@ use Domains\Webnetz\User\UserService;
 
 class CategoryFormatter implements FormatterInterface
 {
-
     /**
      * @inheritDoc
      */

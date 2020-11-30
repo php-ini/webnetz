@@ -8,8 +8,8 @@ namespace Domains\Webnetz\Image\Validators;
  * @package Domains\Webnetz\Image\Validators
  * @author Mahmoud Abdelsattar <jinkazama_m@yahoo.com>
  */
-interface ValidatorInterface {
-
+interface ValidatorInterface
+{
     /**
      * @param array $data
      * @return bool

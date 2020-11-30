@@ -68,7 +68,7 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <i class="fa fa-align-justify"></i>
+{{--                                                <i class="fa fa-align-justify"></i>--}}
                                             </div>
                                         </div>
                                         <select id="categories" name="categories[]" multiple="multiple" class="form-control js-example-basic-multiple" aria-describedby="categoriesHelpBlock">

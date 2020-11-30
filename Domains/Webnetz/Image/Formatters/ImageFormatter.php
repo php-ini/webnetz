@@ -1,14 +1,17 @@
 <?php
-
+declare(strict_types=1);
 
 namespace Domains\Webnetz\Image\Formatters;
-
 
 use Domains\Webnetz\Image\ImageService;
 use Domains\Webnetz\User\UserService;
 use Illuminate\Support\Facades\Auth;
 use Image;
 
+/**
+ * Class ImageFormatter
+ * @package Domains\Webnetz\Image\Formatters
+ */
 class ImageFormatter implements FormatterInterface
 {
     /**
@@ -21,13 +24,18 @@ class ImageFormatter implements FormatterInterface
         return $data;
     }
 
+    /**
+     * @param array $data
+     * @return array
+     */
     private function getImageData(array $data): array
     {
-        if(empty($data['uploaded_image'])) {
+        if (empty($data['uploaded_image'])) {
+            $categories = !empty($data['categories']) ? $categories : '';
             return [
                 'name' => $data['name'],
                 'keywords' => $data['keywords'],
-                'categories' => $data['categories'],
+                'categories' => $categories,
             ];
         }
 
@@ -50,15 +58,28 @@ class ImageFormatter implements FormatterInterface
         ];
     }
 
+    /**
+     * @param $filePath
+     * @return array
+     */
     private function getExifData($filePath)
     {
         return @exif_read_data(public_path($filePath));
     }
 
+    /**
+     * @param $image
+     * @param array $data
+     * @return array
+     */
     public function prepareCategoriesForImage($image, array $data): array
     {
+        if (empty($data['categories'])) {
+            return [];
+        }
+
         $i = 0;
-        foreach($data['categories'] as $category){
+        foreach ($data['categories'] as $category) {
             $all[$i]['category_id'] = $category;
             $all[$i]['image_id'] = $image->id;
             $all[$i]['user_id'] = Auth::user()->id;
