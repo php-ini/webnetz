@@ -15,6 +15,7 @@ class Image extends Controller
         view()->share('header', 'Images Listing');
         view()->share('slot', '');
         $this->service = new ImageService();
+	$this->middleware(['auth:sanctum', 'verified']);
     }
 
     /**

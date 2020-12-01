@@ -14,6 +14,7 @@ class Category extends Controller
         view()->share('header', 'Categories Listing');
         view()->share('slot', '');
         $this->service = new CategoryService();
+	$this->middleware(['auth:sanctum', 'verified']);
     }
 
     /**
